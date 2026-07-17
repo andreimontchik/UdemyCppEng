@@ -1,3 +1,6 @@
+#include <algorithm>
+#include <numeric>
+
 #include "algo.hpp"
 
 namespace mystd
@@ -5,25 +8,29 @@ namespace mystd
 
 bool equal(Iterator first1, Iterator last1, Iterator first2)
 {
-    return true;
+    return std::equal(first1, last1, first2);
 }
 
 Iterator fill_n(Iterator first, std::size_t count, const std::int32_t &value)
 {
+    std::fill_n(first, count, value);
     return first;
 }
 
 void iota(Iterator first, Iterator last, std::int32_t value)
 {
+    std::iota(first, last, value);
 }
 
 Iterator copy(Iterator first, Iterator last, Iterator d_first)
 {
+    std::copy(first, last, d_first);
     return d_first;
 }
 
 std::int32_t accumulate(Iterator first, Iterator last, std::int32_t init)
 {
+    std::accumulate(first, last, init);
     return init;
 }
 

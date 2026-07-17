@@ -50,5 +50,11 @@ int main()
     const auto sum1 = std::accumulate(my_vector.begin(), my_vector.end(), 0);
     std::cout << sum1 << '\n';
 
+    const auto product = std::accumulate(my_vector.begin(),
+                                         my_vector.end(),
+                                         1,
+                                         [](auto l, auto r) { return l * r; });
+    std::cout << product << '\n';
+
     return 0;
 }
