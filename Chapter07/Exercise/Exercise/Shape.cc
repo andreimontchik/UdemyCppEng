@@ -3,7 +3,9 @@
 #include "Shape.hpp"
 
 #include "distance.hpp"
-#include "utils.hpp"
+//#include "utils.hpp"
+
+const double pi = 3.14159292035;
 
 double Shape::midpoint_distance(const Shape *other) const
 {
