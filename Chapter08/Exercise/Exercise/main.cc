@@ -5,6 +5,17 @@
 #include <type_traits>
 
 template <typename StringType, typename ViewType>
+struct is_string
+    : public std::bool_constant<(std::is_same_v<StringType, std::string> ||
+                                 std::is_same_v<StringType, std::wstring> ||
+                                 std::is_same_v<StringType, std::u32string>) &&
+                                (std::is_same_v<ViewType, std::string_view> ||
+                                 std::is_same_v<ViewType, std::wstring_view> ||
+                                 std::is_same_v<ViewType, std::u32string_view>)>
+{
+};
+
+template <typename StringType, typename ViewType>
 StringType to_upper_case(ViewType text);
 
 template <typename StringType, typename ViewType>
@@ -27,9 +38,9 @@ int main()
     to_upper_case<std::wstring, std::wstring_view>(input_text_w);
     to_lower_case<std::wstring, std::wstring_view>(input_text_w);
 
-    // auto input_text_u32 = std::u32string(input_text.begin(), input_text.end());
-    // to_upper_case<std::u32string, std::u32string_view>(input_text_u32);
-    // to_lower_case<std::u32string, std::u32string_view>(input_text_u32);
+    auto input_text_u32 = std::u32string(input_text.begin(), input_text.end());
+    to_upper_case<std::u32string, std::u32string_view>(input_text_u32);
+    to_lower_case<std::u32string, std::u32string_view>(input_text_u32);
 
     return 0;
 }
